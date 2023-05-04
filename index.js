@@ -3,7 +3,7 @@
 /*
   GÖREV 1
   - Input:  Bir dosya yolunu (path) parametre olarak alacak bir fonksiyon oluştur.
-  - Output: Yazacağın fonksiyon, verilen bir dosya adresideki(path) dosyanın adını vermeli.
+  - Output: Yazacağın fonksiyon, verilen bir dosya adresindeki(path) dosyanın adını vermeli.
   * İpucu:  Dosya adresinin / işaretleri ile bölümlendiğine dikkat et.
 
   örnek input:  "C:/Users/johnsmith/Music/Beethoven_5.mp3"
@@ -16,8 +16,12 @@
   örnek output: ""
 */
 
-function dosyaAdiniBul(/* kodlar buraya */) {
-  // kodlar buraya
+function dosyaAdiniBul(dosyaYolu) {
+  if (dosyaYolu === ""){
+    return ""
+  }
+  let dosyaAdresi = dosyaYolu.split ("/");
+  return dosyaAdresi [dosyaAdresi.length -1]
 }
 
 /*
@@ -38,9 +42,18 @@ function dosyaAdiniBul(/* kodlar buraya */) {
   örnek output: 104
 */
 
-function ortalamaBul(/* kodlar buraya */) {
-  // kodlar buraya
+function ortalamaBul(sayı) {
+  if (sayı.length === 0){
+    return null
+  }
+
+  const toplam =  sayı.reduce((toplam,item)=> {
+      return toplam + item
+    },0) 
+    const ortalama = toplam/ sayı.length;
+    return ortalama;
 }
+console.log (ortalamaBul([109, 216, 288, 143, 71, 185, -278, 194, 5]))
 
 /*
   GÖREV 3
@@ -62,9 +75,14 @@ function ortalamaBul(/* kodlar buraya */) {
   örnek output: [109, 216, 288, 143, 185, 194]
 */
 
-function ortalamadanBuyukleriBul(/* kodlar buraya */) {
-  // kodlar buraya
+function ortalamadanBuyukleriBul(sayılar, ortalamaBul) {
+  let ortalama = ortalamaBul(sayılar)  ;
+  if  (sayılar.length === 0)
+  return null;
+    else 
+    return sayılar.filter( sayı => sayı >= ortalama)
 }
+console.log (ortalamadanBuyukleriBul([50, -26, 153, 7], ortalamaBul))
 
 /* !!!! Burdan aşağısını değiştirmeyin !!!! */
 function as() {
